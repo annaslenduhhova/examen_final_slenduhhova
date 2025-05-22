@@ -40,7 +40,7 @@ class PerrosService extends ChangeNotifier {
   }
 
 
-  Future<String> createProduct(Perro perro) async {
+  Future<String> createPerro(Perro perro) async {
     final url = Uri.https(_baseUrl);
     final resp = await http.post(url, body: perro.toJson());
     final decodedData = json.decode(resp.body);

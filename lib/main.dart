@@ -32,7 +32,7 @@ class MyApp extends StatelessWidget {
         routes: {
           'login': (_) => LoginScreen(),
           'home': (_) => HomeScreen(),
-          'crearPerro': (_) => PerrosScreen(),      
+          'crearPerro': (_) => CrearPerroScreen(),      
         },
       ),
     );

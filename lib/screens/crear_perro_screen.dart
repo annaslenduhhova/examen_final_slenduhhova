@@ -34,8 +34,9 @@ class _PersonalPageState extends State<CrearPerroScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final perroService = Provider.of<PerrosService>(context);
     return Scaffold(
-      appBar: AppBar(title: const Text('Slenduhhova')),
+      appBar: AppBar(title: const Text('Perro')),
       body: Padding(
         padding: const EdgeInsets.all(16),
         child: Column(
@@ -67,7 +68,7 @@ class _PersonalPageState extends State<CrearPerroScreen> {
             ),
             const SizedBox(height: 20),
             ElevatedButton(
-              onPressed: () {
+              onPressed: () async {
                 final updated = Perro(
                   id: idController.text,
                   nom: nomController.text,
@@ -77,13 +78,11 @@ class _PersonalPageState extends State<CrearPerroScreen> {
                   edad: edadController.text,
 
                 );
-                Navigator.pop(context, updated);
-              },
-               child: productsService.isSaving
-            ? CircularProgressIndicator(color: Colors.white)
-            : Icon(Icons.save_outlined),
-
-            ),
+                Navigator.pop(context, updated); 
+                perroService.createPerro(perro);                              
+              }, child: Text("Guardar"),
+              
+            ),          
           ],
         ),
       ),
